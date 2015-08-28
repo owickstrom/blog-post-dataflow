@@ -1,0 +1,28 @@
+/* my-diagram.flow */
+diagram {
+  io agent {
+    title = "User Agent"
+  }
+
+  boundary datacenter {
+    title = "Corporate Data Center"
+
+    function server {
+      title = "Server"
+    }
+
+    database db {
+      title = "MySQL"
+    }
+  }
+
+  agent -> server {
+    operation = "Browse"
+    data = "IP"
+  }
+
+  server -> db {
+    operation = "Save"
+    data = "IP"
+  }
+}
