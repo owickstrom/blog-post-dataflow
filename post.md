@@ -1,17 +1,18 @@
 # Visualizing Your System with DataFlow
 
-Writing documentation is hard. Keeping documentation up-to-date is even harder.
-In recent Sony projects me and my colleagues have been working with documenting
-data flows in systems to enable security reviews of our software. When we
-started with this work we decided to generate these documents, not only for the
-sake of security reviews but also to have a living documentation that
-developers have use for when working in our projects.
+Writing good documentation is hard. Keeping documentation up-to-date is even
+harder.  In recent Sony projects me and my colleagues have been working with
+documenting data flows in systems to enable security reviews of our software.
+When we started with this work we decided to generate these documents, not only
+for the sake of security reviews but also to have a living documentation that
+developers can maintain and have use for when working in our projects.
 
 The tool that emerged is a program called *DataFlow*. It stands of the
 shoulders of giants by leveraging great software such as
 [graphviz](http://graphviz.org/) and [PlantUML](http://plantuml.com/) together
 with the [Data flow diagram](https://en.wikipedia.org/wiki/Data_flow_diagram)
-format.
+format. DataFlow is open sourced under the BSD-3 license and the source is
+available [on GitHub](https://github.com/sonyxperiadev/dataflow).
 
 > A DFD shows what kind of information will be input to and output from the
 > system, where the data will come from and go to, and where the data will be
@@ -151,7 +152,7 @@ now build other tools on top of DataFlow.
 }
 ```
 
-One tool that we built on top of the DataFlow JSON output generates a HTML
+One tool that we built on top of the DataFlow JSON output generates an HTML
 overview of threats and requirements in the system. We list threats in data
 flows using an array of threat IDs.
 
@@ -163,8 +164,8 @@ agent -> server {
 }
 ```
 
-We have another file that contains a registry of threats and requirements for
-mitigating them.
+We have another file that contains a registry of threats and the requirements
+for mitigating them.
 
 ```json
 {
@@ -184,7 +185,8 @@ of the system that are affected.
 Another neat trick we have employed recently is to print warnings for all flows
 of data that crosses trust boundaries without listing any threats. These kinds
 of tools are simple to construct when we are working with data. However, using
-the consise input format, we are not sacrifising readability or productivity.
+the consise input format of DataFlow, we are not sacrifising readability or
+productivity.
 
 ## Getting Started with DataFlow
 

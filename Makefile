@@ -1,5 +1,5 @@
 .PHONY: all
-all: my-diagram.png my-diagram-times.png my-diagram-seq.png my-diagram.json
+all: post.html my-diagram.png my-diagram-times.png my-diagram-seq.png my-diagram.json
 
 my-diagram.png: my-diagram.flow
 	dataflow dfd $< | dot -Tpng -o $@
@@ -22,6 +22,9 @@ my-diagram-seq.png: my-diagram.flow
 my-diagram.json: my-diagram.flow
 	dataflow json $< > $@
 
+post.html: post.md
+	grip --export $< $@
+
 .PHONY: watch
-watch:
-	grip post.md
+watch: post.md
+	grip $<
