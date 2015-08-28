@@ -1,10 +1,12 @@
 .PHONY: all
-all: post.html my-diagram.png my-diagram-times.png my-diagram-seq.png my-diagram.json
+all: target/index.html target/my-diagram.png target/my-diagram-times.png target/my-diagram-seq.png target/my-diagram.json
 
-my-diagram.png: my-diagram.flow
+target/my-diagram.png: my-diagram.flow
+	@mkdir -p target
 	dataflow dfd $< | dot -Tpng -o $@
 
-my-diagram-times.png: my-diagram.flow
+target/my-diagram-times.png: my-diagram.flow
+	@mkdir -p target
 	dataflow dfd $< | dot \
 		-Tpng \
 		-Gfontname="Times" \
@@ -12,19 +14,22 @@ my-diagram-times.png: my-diagram.flow
 		-Efontname="Times" \
 		-o $@
 
-my-diagram-seq.png: my-diagram.flow
+target/my-diagram-seq.png: my-diagram.flow
+	@mkdir -p target
 	dataflow seq $< | java \
 		-Djava.awt.headless=true \
 		-jar plantuml.jar \
 		-tpng \
 		-pipe > $@
 
-my-diagram.json: my-diagram.flow
+target/my-diagram.json: my-diagram.flow
+	@mkdir -p target
 	dataflow json $< > $@
 
-post.html: post.md
+target/index.html: index.md
+	@mkdir -p target
 	grip --export $< $@
 
 .PHONY: watch
-watch: post.md
+watch: index.md
 	grip $<
