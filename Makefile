@@ -1,6 +1,10 @@
 .PHONY: all
 all: target/index.html target/my-diagram.png target/my-diagram-times.png target/my-diagram-seq.png target/my-diagram.json
 
+gh-pages: all
+	git checkout gh-pages
+	cp target/* .
+
 target/my-diagram.png: my-diagram.flow
 	@mkdir -p target
 	dataflow dfd $< | dot -Tpng -o $@
