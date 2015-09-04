@@ -201,4 +201,8 @@ Issues](https://github.com/sonyxperiadev/dataflow).
 
 ## Bonus
 
-**TODO:** Write something about the vim plugin.
+While working with DataFlow I felt an urging need to have good editor support.
+As an aside hobby project I created a Vim plugin called [vim-dataflow](
+https://github.com/owickstrom/vim-dataflow) that adds syntax highlighting and
+basic `makeprg` and Syntastic error checking using the `dataflow validate
+<FILE>` command.
